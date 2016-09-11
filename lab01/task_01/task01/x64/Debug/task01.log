@@ -1,0 +1,10 @@
+﻿  MyWindow.cpp
+c:\users\anatoly\documents\visual_studio_2015\projects\cg\task01\task01\mywindow.cpp(14): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\anatoly\documents\visual_studio_2015\projects\cg\task01\task01\mywindow.cpp(15): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\anatoly\documents\visual_studio_2015\projects\cg\task01\task01\mywindow.cpp(15): warning C4244: 'argument': conversion from 'const int' to 'GLfloat', possible loss of data
+c:\users\anatoly\documents\visual_studio_2015\projects\cg\task01\task01\mywindow.cpp(17): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\anatoly\documents\visual_studio_2015\projects\cg\task01\task01\mywindow.cpp(18): warning C4244: 'argument': conversion from 'const int' to 'GLfloat', possible loss of data
+c:\users\anatoly\documents\visual_studio_2015\projects\cg\task01\task01\mywindow.cpp(18): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\anatoly\documents\visual_studio_2015\projects\cg\task01\task01\mywindow.cpp(63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  task01.vcxproj -> C:\Users\Anatoly\Documents\visual_studio_2015\Projects\CG\task01\x64\Debug\task01.exe
+  task01.vcxproj -> C:\Users\Anatoly\Documents\visual_studio_2015\Projects\CG\task01\x64\Debug\task01.pdb (Partial PDB)

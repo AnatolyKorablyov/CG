@@ -1,0 +1,15 @@
+﻿  AbstractWindow.cpp
+  main.cpp
+  MyWindow.cpp
+MyWindow.cpp(14): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+MyWindow.cpp(15): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+MyWindow.cpp(15): warning C4244: 'argument': conversion from 'const int' to 'GLfloat', possible loss of data
+MyWindow.cpp(17): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+MyWindow.cpp(18): warning C4244: 'argument': conversion from 'const int' to 'GLfloat', possible loss of data
+MyWindow.cpp(18): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+MyWindow.cpp(63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating code
+  All 210 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  task01.vcxproj -> C:\Users\Anatoly\Documents\visual_studio_2015\Projects\CG\task01\x64\Release\task01.exe
+  task01.vcxproj -> C:\Users\Anatoly\Documents\visual_studio_2015\Projects\CG\task01\x64\Release\task01.pdb (Full PDB)
