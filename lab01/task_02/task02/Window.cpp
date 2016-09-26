@@ -10,21 +10,21 @@
 #include <fstream>
 #include <sstream>
 
-CColor NormalizeColor(size_t r, size_t g, size_t b)
+CColor ColorFromRGB(unsigned r, unsigned g, unsigned b)
 {
 	CColor color;
-	color.R = r / 255.f;
-	color.G = g / 255.f;
-	color.B = b / 255.f;
+	color.r = r / 255.f;
+	color.g = g / 255.f;
+	color.b = b / 255.f;
 	return color;
 }
 
-const CColor BLACK_COLOR = NormalizeColor(0, 0, 0);
-const CColor DARK_BLUE_COLOR = NormalizeColor(30, 15, 72);
-const CColor BLUE_COLOR = NormalizeColor(39, 97, 196);
-const CColor PINK_COLOR = NormalizeColor(172, 21, 91);
-const CColor YELLOW_COLOR = NormalizeColor(236, 190, 33);
-const CColor WHITE_COLOR = NormalizeColor(255, 255, 255);
+const CColor BLACK_COLOR = ColorFromRGB(0, 0, 0);
+const CColor DARK_BLUE_COLOR = ColorFromRGB(30, 15, 72);
+const CColor BLUE_COLOR = ColorFromRGB(39, 97, 196);
+const CColor PINK_COLOR = ColorFromRGB(172, 21, 91);
+const CColor YELLOW_COLOR = ColorFromRGB(236, 190, 33);
+const CColor WHITE_COLOR = ColorFromRGB(255, 255, 255);
 
 
 void StrokeEllipse(float xCenter, float yCenter, float rx, float ry, int pointCount = 360)
@@ -73,7 +73,7 @@ void FillSector(float xCenter, float yCenter, float rx, float ry, int s_angle, i
 	// Начальная точка веера располагается в центре эллипса
 	glVertex2f(xCenter, yCenter);
 	// Остальные точки - равномерно по его границе
-	for (float angle = (s_angle * M_PI / 180); angle <= float(e_angle * M_PI / 180); angle += step)
+	for (float angle = float(s_angle * M_PI / 180); angle <= float(e_angle * M_PI / 180); angle += step)
 	{
 		float a = (fabsf(angle - float(2 * M_PI)) < 0.00001f) ? 0.f : angle;
 		const float dx = rx * cosf(a);
@@ -109,27 +109,28 @@ void CWindow::OnUpdateWindow(float deltaSeconds)
 void CWindow::DrawWings()
 {
 	// обводка правое крыло
-	glColor3f(DARK_BLUE_COLOR.R, DARK_BLUE_COLOR.G, DARK_BLUE_COLOR.B);
+	glColor3fv(glm::value_ptr(DARK_BLUE_COLOR));
 	FillEllipse(556, 320, 20, 80);
 	FillEllipse(543, 365, 32, 47);
+	// TODO: use glColor3fv
 
 	// правое крыло
-	glColor3f(BLUE_COLOR.R, BLUE_COLOR.G, BLUE_COLOR.B);
+	glColor3fv(glm::value_ptr(BLUE_COLOR));
 	FillEllipse(556, 320, 18, 78);
 	FillEllipse(543, 365, 30, 45);
 
 	// обводка левое крыло
-	glColor3f(DARK_BLUE_COLOR.R, DARK_BLUE_COLOR.G, DARK_BLUE_COLOR.B);
+	glColor3fv(glm::value_ptr(DARK_BLUE_COLOR));
 	FillEllipse(240, 320, 20, 80);
 	FillEllipse(250, 365, 32, 47);
 
 	// левое крыло
-	glColor3f(BLUE_COLOR.R, BLUE_COLOR.G, BLUE_COLOR.B);
+	glColor3fv(glm::value_ptr(BLUE_COLOR));
 	FillEllipse(240, 320, 18, 78);
 	FillEllipse(250, 365, 30, 45);
 
 	// пальцы левой руки
-	glColor3f(BLACK_COLOR.R, BLACK_COLOR.G, BLACK_COLOR.B);
+	glColor3fv(glm::value_ptr(BLACK_COLOR));
 	glLineWidth(5);
 	glBegin(GL_LINE_STRIP);
 	glVertex2f(236.0, 365.0);
@@ -142,7 +143,7 @@ void CWindow::DrawWings()
 	glEnd();
 
 	// пальцы правой руки
-	glColor3f(BLACK_COLOR.R, BLACK_COLOR.G, BLACK_COLOR.B);
+	glColor3fv(glm::value_ptr(BLACK_COLOR));
 	glLineWidth(5);
 	glBegin(GL_LINE_STRIP);
 	glVertex2f(538.0, 366.0);
@@ -158,7 +159,7 @@ void CWindow::DrawWings()
 void CWindow::DrawFoots()
 {
 	// левая нога - обводка
-	glColor3f(BLACK_COLOR.R, BLACK_COLOR.G, BLACK_COLOR.B);
+	glColor3fv(glm::value_ptr(BLACK_COLOR));
 	glBegin(GL_QUADS);
 	glVertex2f(307, 508);
 	glVertex2f(330, 536);
@@ -174,7 +175,7 @@ void CWindow::DrawFoots()
 	glEnd();
 
 	// левая нога
-	glColor3f(PINK_COLOR.R, PINK_COLOR.G, PINK_COLOR.B);
+	glColor3fv(glm::value_ptr(PINK_COLOR));
 	glBegin(GL_QUADS);
 	glVertex2f(359, 440);
 	glVertex2f(392, 440);
@@ -191,7 +192,7 @@ void CWindow::DrawFoots()
 
 
 	// правая нога - обводка
-	glColor3f(BLACK_COLOR.R, BLACK_COLOR.G, BLACK_COLOR.B);
+	glColor3fv(glm::value_ptr(BLACK_COLOR));
 	glBegin(GL_QUADS);
 	glVertex2f(504, 508);
 	glVertex2f(492, 538);
@@ -207,7 +208,7 @@ void CWindow::DrawFoots()
 	glEnd();
 
 	// правая нога
-	glColor3f(PINK_COLOR.R, PINK_COLOR.G, PINK_COLOR.B);
+	glColor3fv(glm::value_ptr(PINK_COLOR));
 	glBegin(GL_QUADS);
 	glVertex2f(409, 440);
 	glVertex2f(442, 440);
@@ -226,15 +227,15 @@ void CWindow::DrawFoots()
 void CWindow::DrawBody()
 {
 	// темно-синяя обводка шара
-	glColor3f(DARK_BLUE_COLOR.R, DARK_BLUE_COLOR.G, DARK_BLUE_COLOR.B);
+	glColor3fv(glm::value_ptr(DARK_BLUE_COLOR));
 	FillEllipse(400, 300, 150, 150);
 
 	// тело шара
-	glColor3f(BLUE_COLOR.R, BLUE_COLOR.G, BLUE_COLOR.B);
+	glColor3fv(glm::value_ptr(BLUE_COLOR));
 	FillEllipse(400, 300, 140, 140);
 
 	// бабочка
-	glColor3f(DARK_BLUE_COLOR.R, DARK_BLUE_COLOR.G, DARK_BLUE_COLOR.B);
+	glColor3fv(glm::value_ptr(DARK_BLUE_COLOR));
 	FillTriangle(362, 340, 356, 400, 410, 370);
 	FillTriangle(400, 370, 450, 340, 445, 400);
 }
@@ -242,12 +243,12 @@ void CWindow::DrawBody()
 void CWindow::DrawFace()
 {
 	// клюв
-	glColor3f(YELLOW_COLOR.R, YELLOW_COLOR.G, YELLOW_COLOR.B);
+	glColor3fv(glm::value_ptr(YELLOW_COLOR));
 	FillEllipse(400, 275, 80, 60);
 	FillEllipse(400, 200, 20, 20);
 
 	// разрез рта 
-	glColor3f(BLACK_COLOR.R, BLACK_COLOR.G, BLACK_COLOR.B);
+	glColor3fv(glm::value_ptr(BLACK_COLOR));
 	glLineWidth(5);
 	glBegin(GL_LINE_STRIP);
 	glVertex2f(319.0, 275.0);
@@ -263,45 +264,47 @@ void CWindow::DrawFace()
 	glEnd();
 
 	// левый глаз - обводка
-	glColor3f(BLACK_COLOR.R, BLACK_COLOR.G, BLACK_COLOR.B);
+	glColor3fv(glm::value_ptr(BLACK_COLOR));
 	FillEllipse(350, 175, 50, 60);
 
 	// левый глаз - белок
-	glColor3f(WHITE_COLOR.R, WHITE_COLOR.G, WHITE_COLOR.B);
+	glColor3fv(glm::value_ptr(WHITE_COLOR));
 	FillEllipse(350, 175, 45, 55);
 
 	// левый глаз - зрачок
-	glColor3f(BLACK_COLOR.R, BLACK_COLOR.G, BLACK_COLOR.B);
+	glColor3fv(glm::value_ptr(BLACK_COLOR));
 	FillEllipse(380, 185, 13, 20);
 
 
 	// левый глаз - веко
-	glColor3f(PINK_COLOR.R, PINK_COLOR.G, PINK_COLOR.B);
+	glColor3fv(glm::value_ptr(PINK_COLOR));
 	FillSector(350, 175, 45, 55, 170, 350);
 
 	// правый глаз - обводка			   
-	glColor3f(BLACK_COLOR.R, BLACK_COLOR.G, BLACK_COLOR.B);
+	glColor3fv(glm::value_ptr(BLACK_COLOR));
 	FillEllipse(446, 175, 50, 60);
 
 	// правый глаз - белок				   
-	glColor3f(WHITE_COLOR.R, WHITE_COLOR.G, WHITE_COLOR.B);
+	glColor3fv(glm::value_ptr(WHITE_COLOR));
 	FillEllipse(446, 175, 45, 55);
 
 
 	// правый глаз - зрачок			   
-	glColor3f(BLACK_COLOR.R, BLACK_COLOR.G, BLACK_COLOR.B);
+	glColor3fv(glm::value_ptr(BLACK_COLOR));
 	FillEllipse(415, 185, 13, 20);
 
 	// правый глаз - веко				  
-	glColor3f(PINK_COLOR.R, PINK_COLOR.G, PINK_COLOR.B);
+	glColor3fv(glm::value_ptr(PINK_COLOR));
 	FillSector(446, 175, 45, 55, 200, 380);
 }
 
 void CWindow::OnDrawWindow(const glm::ivec2 &size)
 {
     SetupView(size);
-	glEnable(GL_POINT_SMOOTH);
-
+	glEnable(GL_LINE_SMOOTH);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	DrawWings();
 	DrawFoots();
 	DrawBody();

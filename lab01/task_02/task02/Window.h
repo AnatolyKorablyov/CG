@@ -1,12 +1,8 @@
 #pragma once
 #include "DispatchEvent.h"
+#include <glm/vec3.hpp>
 
-struct CColor
-{
-	float R;
-	float G;
-	float B;
-};
+typedef glm::vec3 CColor;
 
 class CWindow : public CAbstractInputControlWindow
 {
