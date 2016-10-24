@@ -1,0 +1,6 @@
+﻿  Bodies.cpp
+c:\users\anatoly\documents\visual_studio_2015\projects\cg\lab_02\task01_icosaedr\task01_icosaedr\bodies.cpp(32): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\anatoly\documents\visual_studio_2015\projects\cg\lab_02\task01_icosaedr\task01_icosaedr\bodies.cpp(32): warning C4244: 'initializing': conversion from 'double' to 'const GLfloat', possible loss of data
+c:\users\anatoly\documents\visual_studio_2015\projects\cg\lab_02\task01_icosaedr\task01_icosaedr\bodies.cpp(34): warning C4305: 'initializing': truncation from 'double' to 'float'
+  task01_icosaedr.vcxproj -> C:\Users\Anatoly\Documents\visual_studio_2015\Projects\CG\lab_02\task01_icosaedr\Debug\task01_icosaedr.exe
+  task01_icosaedr.vcxproj -> C:\Users\Anatoly\Documents\visual_studio_2015\Projects\CG\lab_02\task01_icosaedr\Debug\task01_icosaedr.pdb (Partial PDB)

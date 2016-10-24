@@ -1,0 +1,11 @@
+﻿  Window.cpp
+  stdafx.cpp
+  main.cpp
+  Light.cpp
+  DispatchEvent.cpp
+  Camera.cpp
+  Bodies.cpp
+  AbstractWindow.cpp
+  Generating Code...
+  task01_icosaedr.vcxproj -> C:\Users\Anatoly\Documents\visual_studio_2015\Projects\CG\lab_02\task01_icosaedr\x64\Debug\task01_icosaedr.exe
+  task01_icosaedr.vcxproj -> C:\Users\Anatoly\Documents\visual_studio_2015\Projects\CG\lab_02\task01_icosaedr\x64\Debug\task01_icosaedr.pdb (Partial PDB)
